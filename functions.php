@@ -345,60 +345,181 @@ add_filter( 'image_size_names_choose', 'piratehash_custom_image_sizes' );
 function piratehash_login_styles() {
     ?>
     <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
         body.login {
             background: #000000;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
+        
         .login h1 a {
-            background-image: none;
-            font-size: 28px;
+            background-image: none !important;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #ffffff;
             text-indent: 0;
             width: auto;
             height: auto;
+            text-decoration: none;
+            letter-spacing: -0.02em;
         }
-        .login form {
-            background: #111111;
-            border: 1px solid #222222;
-            border-radius: 8px;
-        }
-        .login label {
-            color: #ffffff;
-        }
-        .login input[type="text"],
-        .login input[type="password"] {
-            background: #000000;
-            border: 2px solid #222222;
-            color: #ffffff;
-        }
-        .login input[type="text"]:focus,
-        .login input[type="password"]:focus {
-            border-color: #ffffff;
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-        }
-        .login .button-primary {
-            background: #ffffff;
-            border-color: #ffffff;
-            color: #000000;
-            text-shadow: none;
+        
+        .login h1 a:focus {
             box-shadow: none;
         }
-        .login .button-primary:hover {
-            background: #cccccc;
-            border-color: #cccccc;
+        
+        .login form,
+        .login form#loginform,
+        #loginform {
+            background: rgba(0, 0, 0, 1) !important;
+            background-color: rgba(0, 0, 0, 1) !important;
+            border: 1px solid #333333 !important;
+            border-radius: 8px;
+            padding: 26px 24px;
         }
+        
+        .login label {
+            color: #999999;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .login input[type="text"],
+        .login input[type="password"],
+        #user_login,
+        #user_pass {
+            background: transparent !important;
+            border: none !important;
+            border-bottom: 1px solid #444444 !important;
+            border-radius: 0 !important;
+            color: #ffffff !important;
+            padding: 12px 0;
+            font-size: 1rem;
+            font-family: inherit;
+            -webkit-text-fill-color: #ffffff !important;
+            box-shadow: none !important;
+        }
+        
+        #user_login {
+            box-shadow: none !important;
+        }
+        
+        .login input#user_pass,
+        #user_pass {
+            border-right: 1px none rgb(255, 255, 255) !important;
+        }
+        
+        .login input[type="text"]:focus,
+        .login input[type="password"]:focus {
+            border-bottom-color: #ffffff !important;
+            box-shadow: none !important;
+            outline: none !important;
+            background: transparent !important;
+        }
+        
+        .login input:-webkit-autofill,
+        .login input:-webkit-autofill:hover,
+        .login input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            border: none !important;
+            border-bottom: 1px solid #444444 !important;
+        }
+        
+        .login .button-primary,
+        #wp-submit {
+            background: #ffffff !important;
+            border: 2px solid #ffffff !important;
+            color: #000000 !important;
+            text-shadow: none !important;
+            box-shadow: none !important;
+            font-family: inherit;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 14px 32px;
+            height: auto;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-top: 26px !important;
+        }
+        
+        .login .button-primary:hover,
+        .login .button-primary:focus {
+            background: transparent !important;
+            border: 2px solid #ffffff !important;
+            color: #ffffff !important;
+        }
+        
+        .login #backtoblog,
+        .login #nav {
+            padding: 0;
+        }
+        
         .login #backtoblog a,
         .login #nav a {
-            color: #999999;
+            color: #666666;
+            font-size: 0.875rem;
         }
+        
         .login #backtoblog a:hover,
         .login #nav a:hover {
             color: #ffffff;
         }
-        .login .message {
-            background: #111111;
-            border-left-color: #ffffff;
+        
+        .login .message,
+        .login .success {
+            background: #000000;
+            border: 1px solid #333333;
+            border-left: 4px solid #ffffff;
             color: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .login .notice-error,
+        .login #login_error {
+            background: #000000;
+            border: 1px solid #333333;
+            border-left: 4px solid #cc1818;
+            color: #ffffff;
+            border-radius: 4px;
+        }
+        
+        .login #login_error a {
+            color: #ffffff;
+        }
+        
+        .login .privacy-policy-page-link {
+            display: none;
+        }
+        
+        .login .forgetmenot label {
+            color: #666666;
+            font-size: 0.8125rem;
+        }
+        
+        .login input[type="checkbox"] {
+            background: #000000;
+            border: 1px solid #333333;
+        }
+        
+        .login input[type="checkbox"]:checked::before {
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%23ffffff' d='M14.83 4.89l1.34.94-5.81 8.38H9.02L5.78 9.67l1.34-1.25 2.57 2.4z'/%3E%3C/svg%3E");
+        }
+        
+        .wp-pwd .button.wp-hide-pw {
+            color: #666666;
+        }
+        
+        .wp-pwd .button.wp-hide-pw:hover {
+            color: #ffffff;
+        }
+        
+        .wp-pwd .button.wp-hide-pw:focus {
+            box-shadow: none;
+            outline: none;
         }
     </style>
     <?php
