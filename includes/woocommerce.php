@@ -95,7 +95,7 @@ function piratehash_price_html( $price_html, $product ) {
     // Sats first (big, white), then fiat (small, gray)
     $fiat_html = '<span class="price-fiat">' . $price_html . '</span>';
     
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_get_price_html', 'piratehash_price_html', 10, 2 );
 
@@ -107,7 +107,7 @@ function piratehash_cart_item_price( $price, $cart_item, $cart_item_key ) {
     $sats = piratehash_usd_to_sats( (float) $product_price );
     $sats_html = '<span class="price-sats">' . piratehash_format_sats( $sats ) . '</span>';
     $fiat_html = '<span class="price-fiat">' . $price . '</span>';
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_cart_item_price', 'piratehash_cart_item_price', 10, 3 );
 
@@ -119,7 +119,7 @@ function piratehash_cart_item_subtotal( $subtotal, $cart_item, $cart_item_key ) 
     $sats = piratehash_usd_to_sats( (float) $product_subtotal );
     $sats_html = '<span class="price-sats">' . piratehash_format_sats( $sats ) . '</span>';
     $fiat_html = '<span class="price-fiat">' . $subtotal . '</span>';
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_cart_item_subtotal', 'piratehash_cart_item_subtotal', 10, 3 );
 
@@ -131,7 +131,7 @@ function piratehash_cart_subtotal( $subtotal, $compound, $cart ) {
     $sats = piratehash_usd_to_sats( (float) $cart_subtotal );
     $sats_html = '<span class="price-sats">' . piratehash_format_sats( $sats ) . '</span>';
     $fiat_html = '<span class="price-fiat">' . $subtotal . '</span>';
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_cart_subtotal', 'piratehash_cart_subtotal', 10, 3 );
 
@@ -143,7 +143,7 @@ function piratehash_cart_total( $total ) {
     $sats = piratehash_usd_to_sats( (float) $cart_total );
     $sats_html = '<span class="price-sats">' . piratehash_format_sats( $sats ) . '</span>';
     $fiat_html = '<span class="price-fiat">' . $total . '</span>';
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_cart_totals_order_total_html', 'piratehash_cart_total', 10, 1 );
 
@@ -155,7 +155,7 @@ function piratehash_order_formatted_line_subtotal( $subtotal, $item, $order ) {
     $sats = piratehash_usd_to_sats( (float) $item_total );
     $sats_html = '<span class="price-sats">' . piratehash_format_sats( $sats ) . '</span>';
     $fiat_html = '<span class="price-fiat">' . $subtotal . '</span>';
-    return $sats_html . $fiat_html;
+    return $sats_html . '<br>' . $fiat_html;
 }
 add_filter( 'woocommerce_order_formatted_line_subtotal', 'piratehash_order_formatted_line_subtotal', 10, 3 );
 
